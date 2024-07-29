@@ -5,7 +5,7 @@
         func testExecuteWithPrivileges() throws {
             throw XCTSkip("user required")
 
-            let fh = try Authorization.executeWithPrivileges("/bin/ls /").get()
+            let fh = try Authorization.executeWithPrivileges(["/bin/ls", "/tmp"]).get()
             print(String(bytes: fh.readDataToEndOfFile(), encoding: .utf8)!)
         }
     }

@@ -8,7 +8,7 @@ Swift wrapper on `AuthorizationExecuteWithPrivileges`.
 import Authorization
 
 func main() throws {
-    let fileHandler = try Authorization.executeWithPrivileges("/bin/ls /").get()
+    let fileHandler = try Authorization.executeWithPrivileges(["/bin/ls", "/tmp"]).get()
     print(String(bytes: fileHandler.readDataToEndOfFile(), encoding: .utf8)!)
 }
 
