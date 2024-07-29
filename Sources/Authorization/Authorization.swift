@@ -13,7 +13,7 @@ public struct Authorization {
     }
     
     public static func executeWithPrivileges(
-        _ command: String
+        _ command: [String]
     ) -> Result<FileHandle, Error> {
         
         let RTLD_DEFAULT = UnsafeMutableRawPointer(bitPattern: -2)
@@ -36,7 +36,7 @@ public struct Authorization {
         }
         defer { AuthorizationFree(authorizationRef!, [.destroyRights]) }
         
-        var components = command.components(separatedBy: " ")
+        var components = command//.components(separatedBy: " ")
         var path = components.remove(at: 0).cString(using: .utf8)!
         let name = kAuthorizationRightExecute.cString(using: .utf8)!
         
